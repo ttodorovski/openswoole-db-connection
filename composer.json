@@ -1,0 +1,22 @@
+{
+    "name": "rovski/openswoole-db-connection",
+    "description": "OpenSwoole DB connection template",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Rovski\\OpenSwooleDbConnection\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tomaz Todorovski",
+            "email": "tomazt@tobonet.com"
+        }
+    ],
+    "require": {
+        "openswoole/core": "^22.1"
+    },
+    "require-dev": {
+        "openswoole/ide-helper": "~22.0.1"
+    }
+}

@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  db:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: tester
+    healthcheck:
+      test: ["CMD", "mysql", "-uroot", "-ptester"]
+      interval: 2s
+      retries: 20
+    tmpfs:
+      - /var/lib/mysql:rw
+
+  server:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    command: ["/app/sandbox/server.php"]
+    ports:
+      - "9501:9501"
+    volumes:
+      - ./:/app
+    depends_on:
+      db:
+        condition: service_healthy
